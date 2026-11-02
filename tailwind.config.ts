@@ -64,7 +64,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ['var(--font-playfair)', 'Playfair Display', 'Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'Source Sans 3', 'Source Sans Pro', 'system-ui', '-apple-system', 'sans-serif'],
       },
       backgroundImage: {
         'lotus-pattern': "radial-gradient(#F2A31B15 1px, transparent 1px)",

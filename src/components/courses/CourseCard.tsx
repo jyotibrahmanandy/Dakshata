@@ -68,7 +68,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   };
 
   return (
-    <div className="group relative bg-white dark:bg-indigo-950/80 rounded-2xl border border-sand-200 dark:border-indigo-900 hover:border-saffron-400 dark:hover:border-saffron-500 shadow-sm hover:shadow-dakshata-hover transition-all duration-300 flex flex-col overflow-hidden">
+    <div className="group relative bg-white dark:bg-indigo-950/80 rounded-2xl border border-sand-200 dark:border-indigo-900 hover:border-saffron-400 dark:hover:border-saffron-500 shadow-sm hover:shadow-dakshata-hover transition-all duration-300 flex flex-col overflow-hidden w-full max-w-full box-border">
       {/* Thumbnail Container */}
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-indigo-950">
         <img
@@ -186,9 +186,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           </div>
         </div>
 
-        {/* Price & Action Row */}
-        <div className="pt-3 flex items-center justify-between gap-2 border-t border-sand-100 dark:border-indigo-900">
-          <div>
+        {/* Price & Action Footer */}
+        <div className="pt-3 border-t border-sand-100 dark:border-indigo-900 space-y-2.5">
+          {/* Price & Discount Row */}
+          <div className="flex items-baseline justify-between">
             {course.is_free ? (
               <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400 font-serif">
                 Free
@@ -205,12 +206,19 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                 )}
               </div>
             )}
+
+            {!course.is_free && course.original_price > course.price && (
+              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                Save {Math.round(((course.original_price - course.price) / course.original_price) * 100)}%
+              </span>
+            )}
           </div>
 
-          <div className="flex items-center gap-1.5">
+          {/* Action Buttons: 2-column grid ensuring full containment within card */}
+          <div className="grid grid-cols-2 gap-2">
             <Link
               href={`/course/${course.slug}`}
-              className="px-2.5 py-1.5 rounded-lg border border-sand-300 dark:border-indigo-800 text-xs font-semibold text-indigo-900 dark:text-sand-100 hover:bg-sand-100 dark:hover:bg-indigo-900 transition-colors"
+              className="w-full py-2 px-2 rounded-lg border border-sand-300 dark:border-indigo-800 text-xs font-semibold text-indigo-900 dark:text-sand-100 hover:bg-sand-100 dark:hover:bg-indigo-900 transition-colors flex items-center justify-center text-center"
             >
               Details
             </Link>
@@ -220,10 +228,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               target="_blank"
               rel="noopener noreferrer sponsored"
               onClick={handleAffiliateClick}
-              className="px-3 py-1.5 rounded-lg bg-saffron-500 hover:bg-saffron-600 text-indigo-950 text-xs font-bold transition-colors flex items-center gap-1 whitespace-nowrap shadow-sm"
+              className="w-full py-2 px-2 rounded-lg bg-saffron-500 hover:bg-saffron-600 text-indigo-950 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 shadow-sm text-center"
             >
-              <span>{course.is_free ? 'Get Free' : 'Go to Course'}</span>
-              <ExternalLink className="w-3 h-3" />
+              <span className="truncate">{course.is_free ? 'Get Free' : 'Go to Course'}</span>
+              <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
             </a>
           </div>
         </div>

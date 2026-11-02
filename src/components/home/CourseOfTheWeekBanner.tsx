@@ -142,3 +142,4 @@ export const CourseOfTheWeekBanner: React.FC<CourseOfTheWeekProps> = ({ course }
     </section>
   );
 };
+

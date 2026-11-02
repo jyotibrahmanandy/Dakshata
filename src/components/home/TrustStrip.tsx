@@ -52,3 +52,4 @@ export const TrustStrip: React.FC = () => {
     </div>
   );
 };
+

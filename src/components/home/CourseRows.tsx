@@ -144,3 +144,4 @@ export const CourseRows: React.FC<CourseRowsProps> = ({ allCourses }) => {
     </section>
   );
 };
+

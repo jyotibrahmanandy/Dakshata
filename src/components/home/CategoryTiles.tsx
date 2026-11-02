@@ -106,3 +106,4 @@ export const CategoryTiles: React.FC = () => {
     </section>
   );
 };
+

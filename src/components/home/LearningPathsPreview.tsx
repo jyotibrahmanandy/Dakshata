@@ -110,3 +110,4 @@ export const LearningPathsPreview: React.FC = () => {
     </section>
   );
 };
+

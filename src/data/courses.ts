@@ -1667,3 +1667,4 @@ COURSES.forEach((course) => {
     course.best_value_score = parseFloat(((course.rating / priceFactor) * 10).toFixed(1));
   }
 });
+

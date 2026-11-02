@@ -62,3 +62,4 @@ export async function GET() {
     next_scheduled_run: new Date(Date.now() + 3600000 * 19).toISOString(),
   });
 }
+

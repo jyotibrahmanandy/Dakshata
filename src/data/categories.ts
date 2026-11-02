@@ -110,3 +110,4 @@ export const CATEGORIES: Category[] = [
     section: 'business_finance',
   },
 ];
+

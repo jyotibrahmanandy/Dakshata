@@ -140,3 +140,4 @@ export function rankCoursesForUser(
     .map((course) => calculateRecommendationScore(course, preferences))
     .sort((a, b) => b.total_score - a.total_score);
 }
+

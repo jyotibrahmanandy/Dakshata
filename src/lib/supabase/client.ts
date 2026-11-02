@@ -32,3 +32,4 @@ export function getSupabaseClient(): SupabaseClient | null {
 
   return null;
 }
+

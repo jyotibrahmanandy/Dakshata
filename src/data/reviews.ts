@@ -74,3 +74,4 @@ export const REVIEWS: CourseReview[] = [
     verified_enrollment: true,
   },
 ];
+

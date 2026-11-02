@@ -39,3 +39,4 @@ export const ProviderStrip: React.FC = () => {
     </div>
   );
 };
+

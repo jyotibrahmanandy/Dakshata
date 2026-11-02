@@ -31,3 +31,4 @@ export const UNIQUE_COURSES: Course[] = ALL_COURSES.filter((course) => {
     best_value_score: score,
   };
 });
+

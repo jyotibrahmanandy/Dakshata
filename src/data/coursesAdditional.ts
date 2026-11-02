@@ -497,3 +497,4 @@ export const ADDITIONAL_COURSES: Course[] = [
     last_synced_at: '2026-11-02T06:00:00Z',
   },
 ];
+

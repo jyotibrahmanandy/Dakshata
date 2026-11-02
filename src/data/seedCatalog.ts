@@ -637,3 +637,4 @@ export const SEED_CATALOG_PART3: Course[] = [
     last_synced_at: '2026-11-02T06:00:00Z',
   },
 ];
+

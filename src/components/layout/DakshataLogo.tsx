@@ -111,3 +111,4 @@ export const TraditionalDivider: React.FC<{ className?: string }> = ({ className
     <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-saffron-400 to-indigo-900/30" />
   </div>
 );
+

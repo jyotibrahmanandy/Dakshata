@@ -1,73 +1,57 @@
-# Dakshata (दक्षता) — Online Course Catalog & Recommendation Platform
+# Dakshata
 
-> *"Skill is your power."*
+Course catalog and recommendation platform for practical IT certifications and vocational trades.
 
-**Dakshata** (meaning skill, competence, and expertise) is an online course catalog and recommendation platform focused on practical skills, IT certifications, and professional trades. It aggregates, compares, and recommends courses from verified providers (**Coursera, edX, NPTEL/SWAYAM, Udemy, AWS Skill Builder, Skill India / NSDC**) and connects students via affiliate and outbound links with zero markup.
-
----
-
-## 🌟 Key Features
-
-1. **"Find My Course" Smart Recommendation Engine**:
-   - Multi-factor scoring model (0–100) combining **Budget Fit** (25 pts), **Goal & Tag Alignment** (25 pts), **Skill Level Match** (20 pts), **Study Hours vs Course Duration** (10 pts), **Verified Rating** (10 pts), **Language Match** (5 pts), and **Certificate Availability** (5 pts).
-   - Shows a transparent, human-readable *"Why recommended"* badge on each course card.
-
-2. **Cross-Platform Price Comparison & Best-Value Metric**:
-   - Calculates a rating-per-rupee score to surface top-value courses.
-   - Interactive INR (₹) / USD ($) currency switcher with automatic currency conversion.
-
-3. **60+ Verified Realistic Seed Courses**:
-   - Spans **IT & Cloud Certifications** (AWS SAA-C03, Azure AZ-104, Google Cybersecurity, CKA Kubernetes, Full-Stack React/Next.js).
-   - Spans **Vocational Trades** (PMKVY Electrician, Surya Mitra Solar PV Rooftop, CNC VMC Machinist, HVAC Technician, EV Powertrain, TIG/6G Pipe Welder).
-   - Features **100% Free Tuition Programs** from government portals (**NPTEL, SWAYAM, Skill India**).
-
-4. **Multi-Course Side-by-Side Comparison**:
-   - Compare up to 3 courses simultaneously across pricing, rating, best-value score, skill level, duration, certificates, and learning outcomes.
-
-5. **Structured Career Learning Paths**:
-   - 6 roadmaps (Cloud & DevOps, Full Stack Web Dev, Industrial Electrician & Solar PV, Data Analyst & BI, CNC Machinist, Cybersecurity SOC Analyst) with projected annual salaries in INR and step-by-step milestones.
-
-6. **Interactive Skill-Gap Analyzer**:
-   - Learners select their target career role, check off the skills they already possess, and receive an instant readiness percentage and personalized curriculum to bridge the missing competencies.
-
-7. **Student Dashboard & Progress Tracker**:
-   - Track enrolled courses (In Progress with slider percentage updates, Completed with certificate logging, Saved for Later).
-   - Personal wishlist with price-drop notification preferences.
-   - Record and link official credential URLs.
-
-8. **Admin Panel & Scheduled Daily Sync**:
-   - Analytics metrics (catalog size, outbound affiliate clicks, estimated commission revenue in INR).
-   - Provider API sync status and manual synchronization trigger (`/api/sync`).
-   - Feature flags for **Deal of the Day** (with live countdown clock) and **Course of the Week**.
-   - CSV Course Import tool for manually curated feeds.
-   - Real-time outbound click audit log.
+Dakshata aggregates, compares, and recommends courses across providers including Coursera, edX, NPTEL/SWAYAM, Udemy, and Skill India. It provides students with a single interface to compare course costs, certificate types, and syllabus roadmaps, and directs learners to official providers via outbound and affiliate links.
 
 ---
 
-## 🛠️ Tech Stack
+## Core Capabilities
 
-- **Framework**: Next.js 14 (App Router) + TypeScript
-- **Styling**: Tailwind CSS + Custom Design System (Deep Indigo `#2B1B5E`, Saffron Gold `#F2A31B`, Warm Sand `#FBF7F0`)
-- **Database**: Supabase (PostgreSQL, Row Level Security policies, Auth schema included in `src/lib/supabase/schema.sql`)
-- **Icons**: Lucide React
-- **API Routes**: Server-side endpoints for affiliate click tracking and catalog sync
+### Recommendation Engine
+Scores courses on a 0 to 100 scale using seven weighted factors: budget fit (25 points), goal and skill keyword alignment (25 points), skill level match (20 points), study hour commitment against duration (10 points), review rating (10 points), language match (5 points), and certificate availability (5 points). Each recommended card displays a brief explanation of why the course matches the learner's criteria.
+
+### Cross-Platform Price Comparison
+Calculates a rating-per-rupee score across paid and free programs. Learners can switch between INR (₹) and USD ($) across all catalog views.
+
+### Verified Course Catalog
+Includes 64 verified seed courses covering cloud computing, cybersecurity, software engineering, and vocational trades such as solar PV installation, industrial electrical work, CNC machining, and pipe welding. Includes free government programs from NPTEL, SWAYAM, and Skill India.
+
+### Side-by-Side Comparison
+Enables learners to compare up to three courses across syllabus outcomes, total duration, credential validity, and price.
+
+### Career Roadmaps and Skill-Gap Diagnostic
+Contains six structured roadmaps with milestone courses and market salary ranges in India. A diagnostic tool allows learners to check off their current skills against a target role to generate a sequence of courses bridging the gap.
+
+### Student Workspace and Administration
+Provides enrolled course progress tracking, certificate logging, wishlist management, and outbound click analytics for course links. Includes an admin dashboard with CSV course importing and daily sync execution.
 
 ---
 
-## 🚀 Getting Started
+## Tech Stack
 
-### 1. Prerequisites
+- Framework: Next.js 14 (App Router) with TypeScript
+- Styling: Tailwind CSS with deep indigo (`#2B1B5E`) and saffron (`#F2A31B`) palette
+- Database: Supabase (PostgreSQL with Row Level Security policies in `src/lib/supabase/schema.sql`)
+- Icons: Lucide React
+- API Routes: Next.js server-side endpoints for affiliate click tracking and catalog sync
+
+---
+
+## Getting Started
+
+### Prerequisites
 - Node.js v18 or newer
 - npm or yarn
 
-### 2. Installation
+### Installation
 ```bash
 git clone https://github.com/your-username/dakshata.git
 cd dakshata
 npm install
 ```
 
-### 3. Environment Variables
+### Environment Configuration
 Create a `.env.local` file in the root directory (refer to `.env.example`):
 ```env
 NEXT_PUBLIC_SITE_NAME="Dakshata"
@@ -85,28 +69,28 @@ UDEMY_AFFILIATE_TRACKING_ID=dakshata_udemy
 ADMIN_SECRET_KEY=dakshata_admin_2026
 ```
 
-### 4. Running the Development Server
+### Running the Development Server
 ```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 5. Running the Course Catalog Sync Job
+### Running the Course Catalog Sync Job
 The daily sync job can be triggered programmatically or via a cron schedule:
-- **API Route**: `POST /api/sync`
-- **Schedule**: `0 4 * * *` (Daily at 04:00 AM IST)
-- **Manual Trigger**: Navigate to `/admin` and click **"Sync Provider APIs Now"**.
+- API Route: `POST /api/sync`
+- Schedule: `0 4 * * *` (Daily at 04:00 AM IST)
+- Manual Trigger: Navigate to `/admin` and select "Sync Provider APIs Now".
 
-### 6. Setting Up Supabase Database (Optional)
+### Setting Up Supabase Database (Optional)
 To persist data directly to Supabase:
 1. Create a project at [supabase.com](https://supabase.com).
-2. Open the **SQL Editor** in your Supabase dashboard.
+2. Open the SQL Editor in your Supabase dashboard.
 3. Paste and run the entire SQL script from `src/lib/supabase/schema.sql`.
 4. Copy your project URL and Anon key into `.env.local`.
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 ├── public/                 # Static assets and SVG favicon
@@ -131,22 +115,23 @@ To persist data directly to Supabase:
 │   │   ├── courses/        # CourseCard with match score & pricing
 │   │   └── home/           # Hero, Deal of Day, CategoryTiles, TrustStrip
 │   ├── context/            # React context (user, wishlist, compare, currency)
-│   ├── data/               # 60+ verified course seeds, categories, roadmaps
+│   ├── data/               # 64 verified course seeds, categories, roadmaps
 │   ├── lib/                # Recommendation engine, Supabase clients
-│   └── types/              # Comprehensive TypeScript interfaces
+│   └── types/              # TypeScript interfaces
 ```
 
 ---
 
-## 🌐 Deploy to Vercel
+## Deployment
 
-Dakshata is built with standard Next.js 14 App Router and is 100% deploy-ready for Vercel:
-1. Push this repository to GitHub / GitLab.
-2. Import the project into your Vercel Dashboard.
-3. Add the environment variables from `.env.example`.
-4. Click **Deploy**.
+Dakshata is built with the Next.js 14 App Router and is deployable on Vercel:
+1. Push this repository to GitHub or GitLab.
+2. Import the project into the Vercel Dashboard.
+3. Configure the environment variables from `.env.example`.
+4. Run deployment.
 
 ---
 
-## 📄 License
-MIT License. Crafted with passion for skill empowerment across India.
+## License
+
+MIT License.

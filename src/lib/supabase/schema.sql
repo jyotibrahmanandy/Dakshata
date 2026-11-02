@@ -214,3 +214,4 @@ create policy "Users can view own notifications" on public.notifications for sel
 
 -- Affiliate click logging
 create policy "Allow insert affiliate clicks" on public.affiliate_clicks for insert with check (true);
+

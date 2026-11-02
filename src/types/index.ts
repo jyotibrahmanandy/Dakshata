@@ -182,3 +182,4 @@ export interface FilterState {
   languages: string[];
   sortBy: 'recommended' | 'rating' | 'price_low' | 'price_high' | 'value' | 'duration_short';
 }
+
